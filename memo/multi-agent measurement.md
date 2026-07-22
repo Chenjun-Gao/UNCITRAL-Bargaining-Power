@@ -144,14 +144,8 @@ $e$ 命中的条款号、$e$ 之前的现状措辞、以及争论方向（放宽
 → 产出 `provenance.csv`（每条 e 的软分配 + sink 概率 + 证据链）。**质量守恒与 sink 由"概率分布 + 显式 sink 类"
 直接保证，无需 Sinkhorn。**
 
-### 2.4 Coalition Agent（把 §2.2 的支持者固化为联盟，替代人工联盟编码）
+### 2.4 Importance via Pairwise（替代主观 1/2/3）
 
-§2.2 (c) 已区分出每个提案的提出者与支持者；本步把"支持者"结构化为可算特征的联盟。对提案 $p$，agent 读
-此后同 (主题, 条款) 的发言，抽每个发言方的 `stance∈{support/oppose/modify/neutral}` 及证据 span。
-联盟 $S_p$ = 明确 support/modify 且方向一致者（与提出者合起来就是 §3.3 信用分配的受益集合）。
-→ 产出 `coalitions.csv`。联盟特征（规模、跨地区广度用发言方区域表、$\theta$ 立场跨度、桥接中心性）由脚本算。
-
-### 2.5 Importance via Pairwise（替代主观 1/2/3）
 不打绝对分。**Judge agent 做成对比较**：随机配对存活编辑，问"哪条更改变权利义务/准入门槛？"，
 每对多裁判投票。把成对胜负喂 **Bradley–Terry（复用 Round2 代码）** → 每条编辑一个连续 `importance_e`（带 SE）。
 人工只在 V3 上核查成对方向。**这是把主观评分变客观标度的关键一招，且不引入新数学。**
